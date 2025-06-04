@@ -1,0 +1,39 @@
+# 1 What is the right data structure?
+
+You now know the data structures Array, List, LinkedList, Circular LinkedList, Directory, Queue and Stack.
+Which one of these would you select for the following tasks – and why?
+
+- The top 10 scores in an arcade game
+    Array
+    because it has a fixed size and allows for quick access to elements by index, which is useful for displaying a leaderboard.
+
+- The undo-list for a text editor
+    Double Linked List<Edits>
+    because it allows for efficient insertion and deletion of edits, enabling the user to undo and redo actions easily.
+    Stack
+
+- A list of rooms visited in an exploration game
+    List<Rooms>
+    because it allows for dynamic resizing and easy traversal of the rooms, which is useful for exploration games.
+
+- Event sequencer, that triggers actions at certain predefined times
+    Dictionary<Time, Action>
+
+- First-come-first served healing station in a multiplayer game
+    Queue<Players>
+    because it follows the first-in-first-out principle, ensuring that players are healed in the order they arrived.
+
+- Bag of items collected in a game
+    List<Items>
+    because it allows for dynamic resizing and easy access to items, which is useful for managing a player's inventory.
+
+- Reached milestones
+    List<Milestones>
+    because it allows for dynamic resizing and easy access to milestones, which is useful for tracking progress in a game.
+
+- Waypoints for NPC guards patrolling in a game
+    Circular LinkedList<Waypoints>
+    
+- List of tasks to complete for a player
+    LinkedList<Tasks>
+    because it allows for efficient insertion and deletion of tasks, enabling the player to manage their task list easily.

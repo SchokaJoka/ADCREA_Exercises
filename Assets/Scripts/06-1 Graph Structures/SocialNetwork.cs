@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class SocialNetwork : MonoBehaviour
 {
-    public Dictionary<string, Person> mySocialNetwork;
+    private Dictionary<string, Person> mySocialNetwork;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,12 +32,6 @@ public class SocialNetwork : MonoBehaviour
             // Ensure bidirectional friendship
             mySocialNetwork[name2].AddFriend(mySocialNetwork[name1]);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     void OnDrawGizmos()
@@ -71,5 +65,47 @@ public class SocialNetwork : MonoBehaviour
                 }
             }
         }
+    }
+
+    // Gibt den Namen der Person mit den meisten Freunden zurück
+    public string GetPersonWithMostFriends()
+    {
+        string maxPerson = null;
+        int maxFriends = -1;
+        foreach (var person in mySocialNetwork.Values)
+        {
+            if (person.friends.Count > maxFriends)
+            {
+                maxFriends = person.friends.Count;
+                maxPerson = person.name;
+            }
+        }
+        return maxPerson;
+    }
+
+    // Gibt eine Liste der Personen ohne Freunde zurück
+    public List<string> GetPeopleWithNoFriends()
+    {
+        List<string> noFriends = new List<string>();
+        foreach (var person in mySocialNetwork.Values)
+        {
+            if (person.friends.Count == 0)
+            {
+                noFriends.Add(person.name);
+            }
+        }
+        return noFriends;
+    }
+
+    // Gibt die durchschnittliche Anzahl an Freunden pro Person zurück
+    public float GetAverageNumberOfFriends()
+    {
+        if (mySocialNetwork.Count == 0) return 0f;
+        int totalFriends = 0;
+        foreach (var person in mySocialNetwork.Values)
+        {
+            totalFriends += person.friends.Count;
+        }
+        return (float)totalFriends / mySocialNetwork.Count;
     }
 }
